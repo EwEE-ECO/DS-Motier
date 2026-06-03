@@ -142,6 +142,14 @@ python main.py
 
 ---
 
+## Поддержать
+
+Если проект оказался полезным, можно поддержать автора:
+
+[![YooMoney](https://img.shields.io/badge/ЮMoney-Поддержать-8B5CF6?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMjEuNzVDNi4yIDIxLjc1IDEuNSAxNy4wNSAxLjUgMTEuMjVDMS41IDUuNDUgNi4yIDAuNzUgMTIgMC43NUMxNy44IDAuNzUgMjIuNSA1LjQ1IDIyLjUgMTEuMjVDMjIuNSAxNy4wNSAxNy44IDIxLjc1IDEyIDIxLjc1Wk0xMiAzLjc1QzcuNzIgMy43NSA0LjI1IDcuMjIgNC4yNSAxMS41QzQuMjUgMTUuNzggNy43MiAxOS4yNSAxMiAxOS4yNUMxNi4yOCAxOS4yNSAxOS43NSAxNS43OCAxOS43NSAxMS41QzE5Ljc1IDcuMjIgMTYuMjggMy43NSAxMiAzLjc1WiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=)](https://yoomoney.ru/to/4100119169295985)
+
+---
+
 ## Лицензия
 
 MIT License
