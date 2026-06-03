@@ -256,6 +256,37 @@ body::before {
   height: 15px;
 }
 
+.nav-lang {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 16px;
+  font-size: 0.85rem;
+}
+
+.nav-lang a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-lang a:hover {
+  color: var(--text-secondary);
+}
+
+.nav-lang a.active {
+  color: var(--text);
+  cursor: default;
+  pointer-events: none;
+}
+
+.nav-lang span {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  user-select: none;
+}
+
 /* ─── Hero ─── */
 
 .hero {
@@ -1166,7 +1197,8 @@ body::before {
 }
 
 @media (max-width: 700px) {
-  .header-nav a:not(.header-gh-link) {
+  .header-nav a:not(.header-gh-link),
+  .nav-lang {
     display: none;
   }
 
