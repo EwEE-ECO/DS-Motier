@@ -1,0 +1,16 @@
+ROLE {
+    name = "Admin"
+    color = "#ff0000"
+    permissions = administrator
+}
+
+ROLE {
+    name = "Moderator"
+    color = "#00ff00"
+    permissions = manage_messages,manage_channels,kick_members
+}
+
+ROLE {
+    name = "Member"
+    color = "#ffffff"
+}

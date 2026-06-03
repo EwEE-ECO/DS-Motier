@@ -1,0 +1,584 @@
+# Discord Server DSL v3.0
+
+## Цель
+
+Discord Server DSL предназначен для полного описания Discord-сервера в текстовом формате.
+
+DSL должен поддерживать:
+
+* Сервер
+* Роли
+* Категории
+* Текстовые каналы
+* Голосовые каналы
+* Форумы
+* Stage-каналы
+* Права доступа
+* Автовыдачу ролей
+* Тикеты
+* Временные комнаты
+* Счётчики участников
+* Приветственные сообщения
+* Логи
+* Экспорт и импорт
+
+---
+
+# Базовые типы
+
+## Строка
+
+name = "General"
+
+## Число
+
+limit = 10
+
+## Логическое значение
+
+nsfw = true
+
+---
+
+# Переменные
+
+VAR SERVER_NAME = "My Server"
+
+Использование:
+
+name = SERVER_NAME
+
+---
+
+# Подключение файлов
+
+INCLUDE "roles.dsl"
+
+INCLUDE "channels.dsl"
+
+---
+
+# Сервер
+
+SERVER {
+name = "My Community"
+description = "Лучшее сообщество разработчиков"
+verification_level = medium
+default_notifications = all
+}
+
+---
+
+# Роли
+
+ROLE {
+id = owner
+name = "👑 Owner"
+color = "#ff0000"
+
+```
+permissions = administrator
+```
+
+}
+
+ИЛИ
+
+ROLE {
+id = moderator
+
+```
+permissions = manage_messages,kick_members,moderate_members
+```
+
+}
+
+Поддерживаемые разрешения:
+
+administrator
+manage_channels
+manage_roles
+manage_messages
+manage_threads
+manage_events
+kick_members
+ban_members
+moderate_members
+mention_everyone
+view_audit_log
+
+---
+
+# Категории
+
+CATEGORY {
+name = "Administration"
+}
+
+Права категории:
+
+CATEGORY {
+
+```
+name = "Administration"
+
+allow = owner,moderator
+deny = member
+```
+
+}
+
+Все дочерние каналы наследуют права.
+
+---
+
+# Текстовые каналы
+
+TEXT {
+
+```
+name = "general"
+
+topic = "Основной чат"
+
+slowmode = 5
+
+nsfw = false
+
+send_messages = true
+
+create_threads = true
+```
+
+}
+
+---
+
+# Голосовые каналы
+
+VOICE {
+
+```
+name = "General Voice"
+
+limit = 10
+
+bitrate = 64000
+
+video_quality = auto
+```
+
+}
+
+---
+
+# Stage каналы
+
+STAGE {
+
+```
+name = "Podcast"
+```
+
+}
+
+---
+
+# Форумы
+
+FORUM {
+
+```
+name = "help-forum"
+
+default_reaction = "👍"
+
+tags = Python,Java,Rust,JavaScript
+```
+
+}
+
+---
+
+# Каналы-правила
+
+RULES_CHANNEL {
+
+```
+name = "rules"
+```
+
+}
+
+Discord автоматически назначает его как канал правил.
+
+---
+
+# Каналы-сообщества
+
+COMMUNITY {
+
+```
+enabled = true
+
+rules_channel = "rules"
+
+updates_channel = "announcements"
+```
+
+}
+
+---
+
+# Welcome Message
+
+WELCOME {
+
+```
+channel = "welcome"
+
+message = "Добро пожаловать на сервер {user}!"
+```
+
+}
+
+Переменные:
+
+{user}
+{username}
+{member_count}
+{server_name}
+
+---
+
+# Auto Role
+
+AUTO_ROLE {
+
+```
+role = member
+```
+
+}
+
+Выдаётся автоматически после входа.
+
+---
+
+# Reaction Roles
+
+REACTION_ROLE {
+
+```
+channel = "roles"
+
+message = "Выберите роль"
+
+emoji = "🐍"
+
+role = python
+```
+
+}
+
+---
+
+# Buttons Roles
+
+BUTTON_ROLE {
+
+```
+channel = "roles"
+
+label = "Python"
+
+role = python
+
+style = primary
+```
+
+}
+
+Стили:
+
+primary
+secondary
+success
+danger
+
+---
+
+# Tickets
+
+TICKETS {
+
+```
+category = "🎫 Tickets"
+
+staff_roles = owner,moderator
+
+create_channel_name = "create-ticket"
+
+transcript = true
+
+auto_close_days = 30
+```
+
+}
+
+---
+
+# Временные комнаты
+
+TEMP_VOICE {
+
+```
+name = "➕ Create Room"
+
+category = "Voice"
+
+user_limit = 10
+```
+
+}
+
+---
+
+# Логи
+
+LOGS {
+
+```
+joins = "member-logs"
+
+leaves = "member-logs"
+
+message_delete = "mod-logs"
+
+message_edit = "mod-logs"
+
+voice_events = "voice-logs"
+
+moderation = "mod-logs"
+```
+
+}
+
+---
+
+# Счётчики
+
+COUNTER {
+
+```
+type = members
+
+name = "👥 Members: {count}"
+```
+
+}
+
+Типы:
+
+members
+bots
+online
+boosts
+
+---
+
+# Автоматические сообщения
+
+AUTO_MESSAGE {
+
+```
+channel = "general"
+
+interval_hours = 24
+
+message = "Не забудьте показать свой проект!"
+```
+
+}
+
+---
+
+# Эмодзи
+
+EMOJI {
+
+```
+name = "python"
+
+file = "./emojis/python.png"
+```
+
+}
+
+---
+
+# Стикеры
+
+STICKER {
+
+```
+name = "approved"
+
+file = "./stickers/approved.png"
+```
+
+}
+
+---
+
+# Каналы по шаблону
+
+TEXT_TEMPLATE {
+
+```
+name = "project-{number}"
+```
+
+}
+
+При создании:
+
+project-1
+project-2
+project-3
+
+---
+
+# Уровни доступа
+
+PERMISSION_GROUP {
+
+```
+id = staff
+
+roles = owner,moderator
+```
+
+}
+
+Использование:
+
+allow = staff
+
+---
+
+# Команды бота
+
+BOT {
+
+```
+prefix = "!"
+
+language = "ru"
+```
+
+}
+
+---
+
+# Планировщик
+
+SCHEDULED_EVENT {
+
+```
+name = "Code Review"
+
+description = "Разбор проектов"
+
+date = "2026-07-01"
+```
+
+}
+
+---
+
+# Вебхуки
+
+WEBHOOK {
+
+```
+channel = "announcements"
+
+name = "News"
+```
+
+}
+
+---
+
+# Полный пример
+
+SERVER {
+
+```
+name = "Developer Hub"
+```
+
+}
+
+ROLE {
+
+```
+id = owner
+
+name = "Owner"
+
+permissions = administrator
+```
+
+}
+
+AUTO_ROLE {
+
+```
+role = member
+```
+
+}
+
+CATEGORY {
+
+```
+name = "General"
+
+TEXT {
+
+    name = "chat"
+
+}
+```
+
+}
+
+TICKETS {
+
+```
+category = "Tickets"
+
+staff_roles = owner
+```
+
+}
+
+TEMP_VOICE {
+
+```
+name = "Create Room"
+```
+
+}
+
+WELCOME {
+
+```
+channel = "welcome"
+
+message = "Добро пожаловать, {user}!"
+```
+
+}

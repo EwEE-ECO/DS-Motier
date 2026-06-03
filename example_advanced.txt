@@ -1,0 +1,30 @@
+VAR SERVER_NAME = "My Community"
+VAR WELCOME_TEXT = "Welcome to our server!"
+
+SERVER {
+    name = SERVER_NAME
+
+    INCLUDE "example_roles.txt"
+    INCLUDE "example_channels.txt"
+
+    CATEGORY {
+        name = "🎮 GAMING"
+
+        VOICE {
+            name = "Gaming 1"
+        }
+
+        VOICE {
+            name = "Gaming 2"
+        }
+
+        STAGE {
+            name = "Podcast"
+        }
+    }
+
+    FORUM {
+        name = "support"
+        category = "📜 INFORMATION"
+    }
+}

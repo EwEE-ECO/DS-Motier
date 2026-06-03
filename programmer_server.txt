@@ -1,0 +1,328 @@
+// ============================================================
+//  Developer Hub — Discord Server DSL
+//  25 roles, 5 categories, 25 channels
+//  Roles: English | Category names: English | Channels: Russian
+//  (LANGUAGES category channels are in English by request)
+// ============================================================
+
+SERVER {
+    name = "Developer Hub"
+
+    // --------------------------------------------------------
+    //  ROLES (order = hierarchy top → bottom)
+    // --------------------------------------------------------
+
+    // Staff
+    ROLE {
+        name = "👑 Owner"
+        color = "#ff0033"
+        permissions = administrator
+        hoist = true
+    }
+
+    ROLE {
+        name = "🔧 Admin"
+        color = "#ff6600"
+        permissions = manage_channels,manage_roles,manage_messages,ban_members,kick_members,view_audit_log
+        hoist = true
+    }
+
+    ROLE {
+        name = "🛡 Head Moderator"
+        color = "#ffaa00"
+        permissions = manage_messages,manage_threads,kick_members,ban_members,moderate_members,view_audit_log
+        hoist = true
+    }
+
+    ROLE {
+        name = "🛠 Moderator"
+        color = "#ffcc00"
+        permissions = manage_messages,manage_threads,kick_members,moderate_members
+        hoist = true
+    }
+
+    ROLE {
+        name = "🎧 Support"
+        color = "#33cc99"
+        permissions = manage_messages
+        hoist = true
+    }
+
+    // Special
+    ROLE {
+        name = "🤖 Bot"
+        color = "#7289da"
+        permissions = manage_messages,mention_everyone
+        hoist = true
+    }
+
+    ROLE {
+        name = "💎 VIP"
+        color = "#e91e63"
+        hoist = true
+    }
+
+    ROLE {
+        name = "🚀 Booster"
+        color = "#f47fff"
+        hoist = true
+    }
+
+    // Programming Languages
+    ROLE {
+        name = "🐍 Python"
+        color = "#3776ab"
+    }
+
+    ROLE {
+        name = "🟨 JavaScript"
+        color = "#f7df1e"
+    }
+
+    ROLE {
+        name = "🔷 TypeScript"
+        color = "#3178c6"
+    }
+
+    ROLE {
+        name = "☕ Java"
+        color = "#f89820"
+    }
+
+    ROLE {
+        name = "⚙ C/C++"
+        color = "#00599c"
+    }
+
+    ROLE {
+        name = "🦀 Rust"
+        color = "#ce422b"
+    }
+
+    ROLE {
+        name = "🐹 Go"
+        color = "#00add8"
+    }
+
+    ROLE {
+        name = "🐘 PHP"
+        color = "#777bb4"
+    }
+
+    // Domains
+    ROLE {
+        name = "🌐 Frontend"
+        color = "#ff6b6b"
+    }
+
+    ROLE {
+        name = "🗄 Backend"
+        color = "#4ecdc4"
+    }
+
+    ROLE {
+        name = "📱 Mobile Dev"
+        color = "#95e1d3"
+    }
+
+    ROLE {
+        name = "🎮 Game Dev"
+        color = "#c9b1ff"
+    }
+
+    ROLE {
+        name = "🤖 AI/ML"
+        color = "#00d4ff"
+    }
+
+    // Experience Level
+    ROLE {
+        name = "🟢 Senior"
+        color = "#2ecc71"
+        hoist = true
+    }
+
+    ROLE {
+        name = "🟡 Mid"
+        color = "#f1c40f"
+        hoist = true
+    }
+
+    ROLE {
+        name = "⚪ Beginner"
+        color = "#bdc3c7"
+        hoist = true
+    }
+
+    // Base
+    ROLE {
+        name = "👤 Member"
+        color = "#99aab5"
+    }
+
+    // --------------------------------------------------------
+    //  CATEGORIES & CHANNELS
+    // --------------------------------------------------------
+
+    CATEGORY {
+        name = "──（ OFFICIAL ）───────"
+
+        TEXT {
+            name = "╭🌵・добро-пожаловать"
+            topic = "Канал приветствия новых участников"
+            readonly = true
+        }
+
+        TEXT {
+            name = "├📜・правила-и-ссылки"
+            topic = "Правила сервера и полезные ссылки"
+            readonly = true
+        }
+
+        TEXT {
+            name = "├🎫・создать-тикет"
+            topic = "Нажмите, чтобы создать обращение"
+        }
+
+        TEXT {
+            name = "├📣・объявления"
+            topic = "Официальные объявления сервера"
+            readonly = true
+        }
+
+        TEXT {
+            name = "╰❓・частые-вопросы"
+            topic = "FAQ — часто задаваемые вопросы"
+            readonly = true
+        }
+    }
+
+    CATEGORY {
+        name = "──（ COMMUNITY ）─────"
+
+        TEXT {
+            name = "╭🎬・клипы-скриншоты"
+            topic = "Делитесь скриншотами и клипами"
+        }
+
+        TEXT {
+            name = "├🎨・фан-арт"
+            topic = "Художественные работы сообщества"
+        }
+
+        TEXT {
+            name = "├💡・предложения"
+            topic = "Идеи по улучшению сервера"
+            slowmode = 5
+        }
+
+        TEXT {
+            name = "╰🏆・витрина"
+            topic = "Покажите свои проекты"
+            slowmode = 10
+        }
+    }
+
+    CATEGORY {
+        name = "──（ LANGUAGES ）─────"
+
+        TEXT {
+            name = "╭🐍・python"
+            topic = "Обсуждение Python"
+        }
+
+        TEXT {
+            name = "├🟨・javascript"
+            topic = "Обсуждение JavaScript"
+        }
+
+        TEXT {
+            name = "├🔷・typescript"
+            topic = "Обсуждение TypeScript"
+        }
+
+        TEXT {
+            name = "├☕・java"
+            topic = "Обсуждение Java"
+        }
+
+        TEXT {
+            name = "├🦀・rust"
+            topic = "Обсуждение Rust"
+        }
+
+        TEXT {
+            name = "├⚙・c-cpp"
+            topic = "Обсуждение C / C++"
+        }
+
+        FORUM {
+            name = "╰🧵・help-forum"
+            topic = "Форум помощи по любому языку"
+        }
+    }
+
+    CATEGORY {
+        name = "──（ VOICE ）─────────"
+
+        VOICE {
+            name = "🔊 Общий-войс"
+            limit = 10
+            bitrate = 96000
+        }
+
+        VOICE {
+            name = "🔊 Кодим-и-чилим"
+            limit = 5
+            bitrate = 96000
+        }
+
+        VOICE {
+            name = "🔊 Парное-программирование"
+            limit = 2
+            bitrate = 96000
+        }
+
+        VOICE {
+            name = "🔊 Учебная-комната"
+            limit = 8
+            bitrate = 64000
+        }
+
+        STAGE {
+            name = "🎤 Тех-ток"
+        }
+    }
+
+    CATEGORY {
+        name = "──（ STAFF ）─────────"
+
+        TEXT {
+            name = "╭🔒・стафф-чат"
+            topic = "Внутренний чат команды"
+            allow = "👑 Owner","🔧 Admin","🛡 Head Moderator","🛠 Moderator","🎧 Support"
+            deny = "👤 Member"
+        }
+
+        TEXT {
+            name = "├📋・логи-модерации"
+            topic = "Логи действий модераторов"
+            allow = "👑 Owner","🔧 Admin","🛡 Head Moderator","🛠 Moderator"
+            deny = "👤 Member"
+        }
+
+        TEXT {
+            name = "├🎫・логи-тикетов"
+            topic = "Логи тикет-системы"
+            allow = "👑 Owner","🔧 Admin","🛡 Head Moderator","🛠 Moderator"
+            deny = "👤 Member"
+        }
+
+        TEXT {
+            name = "╰🚨・репорты"
+            topic = "Жалобы участников"
+            allow = "👑 Owner","🔧 Admin","🛡 Head Moderator","🛠 Moderator","🎧 Support"
+            deny = "👤 Member"
+        }
+    }
+}

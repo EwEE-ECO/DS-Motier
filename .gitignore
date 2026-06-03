@@ -1,0 +1,31 @@
+# Token
+config.py
+
+# Cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment
+.env
+.venv
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Stray WinRAR temp files
+.py
+
+# Archives
+*.rar
+*.zip
+*.7z
+
+# Test scripts
+test_script.py

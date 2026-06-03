@@ -1,0 +1,74 @@
+SERVER {
+    name = "My Community"
+
+    ROLE {
+        name = "Admin"
+        color = "#ff0000"
+        permissions = administrator
+    }
+
+    ROLE {
+        name = "Moderator"
+        color = "#00ff00"
+        permissions = manage_messages,manage_channels,kick_members
+    }
+
+    ROLE {
+        name = "Member"
+        color = "#ffffff"
+    }
+
+    CATEGORY {
+        name = "📜 INFORMATION"
+
+        TEXT {
+            name = "rules"
+            topic = "Server rules"
+            slowmode = 5
+        }
+
+        TEXT {
+            name = "announcements"
+            readonly = true
+        }
+    }
+
+    CATEGORY {
+        name = "💬 GENERAL"
+
+        TEXT {
+            name = "chat"
+        }
+
+        TEXT {
+            name = "memes"
+        }
+
+        VOICE {
+            name = "General Voice"
+            limit = 10
+            bitrate = 64000
+        }
+    }
+
+    CATEGORY {
+        name = "🎮 GAMING"
+
+        VOICE {
+            name = "Gaming 1"
+        }
+
+        VOICE {
+            name = "Gaming 2"
+        }
+
+        STAGE {
+            name = "Podcast"
+        }
+    }
+
+    FORUM {
+        name = "support"
+        category = "📜 INFORMATION"
+    }
+}
