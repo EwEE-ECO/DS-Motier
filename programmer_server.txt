@@ -1,8 +1,7 @@
 // ============================================================
 //  Developer Hub — Discord Server DSL
 //  25 roles, 5 categories, 25 channels
-//  Roles: English | Category names: English | Channels: Russian
-//  (LANGUAGES category channels are in English by request)
+//  All channels are now in English
 // ============================================================
 
 SERVER {
@@ -168,31 +167,31 @@ SERVER {
         name = "──（ OFFICIAL ）───────"
 
         TEXT {
-            name = "╭🌵・добро-пожаловать"
-            topic = "Канал приветствия новых участников"
+            name = "╭🌵・welcome"
+            topic = "Welcome channel for new members"
             readonly = true
         }
 
         TEXT {
-            name = "├📜・правила-и-ссылки"
-            topic = "Правила сервера и полезные ссылки"
+            name = "├📜・rules-and-links"
+            topic = "Server rules and useful links"
             readonly = true
         }
 
         TEXT {
-            name = "├🎫・создать-тикет"
-            topic = "Нажмите, чтобы создать обращение"
+            name = "├🎫・create-ticket"
+            topic = "Click to create a ticket"
         }
 
         TEXT {
-            name = "├📣・объявления"
-            topic = "Официальные объявления сервера"
+            name = "├📣・announcements"
+            topic = "Official server announcements"
             readonly = true
         }
 
         TEXT {
-            name = "╰❓・частые-вопросы"
-            topic = "FAQ — часто задаваемые вопросы"
+            name = "╰❓・faq"
+            topic = "FAQ — frequently asked questions"
             readonly = true
         }
     }
@@ -201,24 +200,24 @@ SERVER {
         name = "──（ COMMUNITY ）─────"
 
         TEXT {
-            name = "╭🎬・клипы-скриншоты"
-            topic = "Делитесь скриншотами и клипами"
+            name = "╭🎬・clips-screenshots"
+            topic = "Share screenshots and clips"
         }
 
         TEXT {
-            name = "├🎨・фан-арт"
-            topic = "Художественные работы сообщества"
+            name = "├🎨・fan-art"
+            topic = "Community artwork"
         }
 
         TEXT {
-            name = "├💡・предложения"
-            topic = "Идеи по улучшению сервера"
+            name = "├💡・suggestions"
+            topic = "Ideas for server improvement"
             slowmode = 5
         }
 
         TEXT {
-            name = "╰🏆・витрина"
-            topic = "Покажите свои проекты"
+            name = "╰🏆・showcase"
+            topic = "Show off your projects"
             slowmode = 10
         }
     }
@@ -228,37 +227,37 @@ SERVER {
 
         TEXT {
             name = "╭🐍・python"
-            topic = "Обсуждение Python"
+            topic = "Python discussion"
         }
 
         TEXT {
             name = "├🟨・javascript"
-            topic = "Обсуждение JavaScript"
+            topic = "JavaScript discussion"
         }
 
         TEXT {
             name = "├🔷・typescript"
-            topic = "Обсуждение TypeScript"
+            topic = "TypeScript discussion"
         }
 
         TEXT {
             name = "├☕・java"
-            topic = "Обсуждение Java"
+            topic = "Java discussion"
         }
 
         TEXT {
             name = "├🦀・rust"
-            topic = "Обсуждение Rust"
+            topic = "Rust discussion"
         }
 
         TEXT {
             name = "├⚙・c-cpp"
-            topic = "Обсуждение C / C++"
+            topic = "C / C++ discussion"
         }
 
         FORUM {
             name = "╰🧵・help-forum"
-            topic = "Форум помощи по любому языку"
+            topic = "Help forum for any language"
         }
     }
 
@@ -266,31 +265,31 @@ SERVER {
         name = "──（ VOICE ）─────────"
 
         VOICE {
-            name = "🔊 Общий-войс"
+            name = "🔊 General-Voice"
             limit = 10
             bitrate = 96000
         }
 
         VOICE {
-            name = "🔊 Кодим-и-чилим"
+            name = "🔊 Code-and-Chill"
             limit = 5
             bitrate = 96000
         }
 
         VOICE {
-            name = "🔊 Парное-программирование"
+            name = "🔊 Pair-Programming"
             limit = 2
             bitrate = 96000
         }
 
         VOICE {
-            name = "🔊 Учебная-комната"
+            name = "🔊 Study-Room"
             limit = 8
             bitrate = 64000
         }
 
         STAGE {
-            name = "🎤 Тех-ток"
+            name = "🎤 Tech-Talk"
         }
     }
 
@@ -298,29 +297,29 @@ SERVER {
         name = "──（ STAFF ）─────────"
 
         TEXT {
-            name = "╭🔒・стафф-чат"
-            topic = "Внутренний чат команды"
+            name = "╭🔒・staff-chat"
+            topic = "Internal team chat"
             allow = "👑 Owner","🔧 Admin","🛡 Head Moderator","🛠 Moderator","🎧 Support"
             deny = "👤 Member"
         }
 
         TEXT {
-            name = "├📋・логи-модерации"
-            topic = "Логи действий модераторов"
+            name = "├📋・moderation-logs"
+            topic = "Moderator action logs"
             allow = "👑 Owner","🔧 Admin","🛡 Head Moderator","🛠 Moderator"
             deny = "👤 Member"
         }
 
         TEXT {
-            name = "├🎫・логи-тикетов"
-            topic = "Логи тикет-системы"
+            name = "├🎫・ticket-logs"
+            topic = "Ticket system logs"
             allow = "👑 Owner","🔧 Admin","🛡 Head Moderator","🛠 Moderator"
             deny = "👤 Member"
         }
 
         TEXT {
-            name = "╰🚨・репорты"
-            topic = "Жалобы участников"
+            name = "╰🚨・reports"
+            topic = "Member reports"
             allow = "👑 Owner","🔧 Admin","🛡 Head Moderator","🛠 Moderator","🎧 Support"
             deny = "👤 Member"
         }

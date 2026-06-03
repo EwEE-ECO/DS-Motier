@@ -3,153 +3,90 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://python.org)
 [![discord.py](https://img.shields.io/badge/discord.py-2.7%2B-5865f2)](https://discordpy.readthedocs.io)
 
-**DS Motier** — Discord-бот, который строит сервера по текстовому шаблону (DSL v3.0).  
-Создавай роли, каналы, категории, форумы, тикеты и многое другое одной командой.
+**DS Motier** is an open-source Discord bot that builds servers from a text template (DSL v3.0).  
+Create roles, channels, categories, forums, tickets, and more with a single command.
 
 ---
 
-## Возможности
+## Features
 
-- `/build` — загрузи `.txt` файл с описанием сервера → бот создаст всё автоматически
-- `/export` — выгрузи текущий сервер в DSL-формат
-- `/sync` — синхронизация слеш-команд
-- **DSL v3.0**: `SERVER`, `ROLE`, `CATEGORY`, `TEXT`, `VOICE`, `STAGE`, `FORUM`, `WELCOME`, `AUTO_ROLE`, `TICKETS`, `TEMP_VOICE`, `REACTION_ROLE`, `BUTTON_ROLE`, `COUNTER`, `AUTO_MESSAGE`, и другие
-- Права доступа через `allow` / `deny` (по именам ролей)
-- Режим `readonly` для каналов
-- `INCLUDE` — подключение файлов, `VAR` — переменные
+- `/build` — upload .txt template → bot builds the server
+- `/export` — export current server to DSL format
+- `/sync` — sync slash commands (owner only)
+- **DSL v3.0**: `SERVER`, `ROLE`, `CATEGORY`, `TEXT`, `VOICE`, `STAGE`, `FORUM`, `WELCOME`, `AUTO_ROLE`, `TICKETS`, `TEMP_VOICE`, `REACTION_ROLE`, `BUTTON_ROLE`, `COUNTER`, `AUTO_MESSAGE`, and more
+- allow/deny permission selectors
+- readonly channels
+- `INCLUDE` (multi-file), `VAR` (variables)
 
 ---
 
-## Быстрый старт
+## Quick Start
 
 ```bash
-# 1. Установи зависимости
 pip install -r requirements.txt
-
-# 2. Скопируй config.example.py → config.py и вставь токен бота
 cp config.example.py config.py
-# Открой config.py и замени TOKEN на свой
-
-# 3. Запусти бота
+# Edit config.py → add your bot token
 python main.py
 ```
 
-### Получение токена
+### Getting a Token
 
-1. Открой [Discord Developer Portal](https://discord.com/developers/applications)
-2. Создай приложение → Bot → Copy Token
-3. Включи **Privileged Gateway Intents**: `Server Members Intent`, `Message Content Intent`
+1. Open [Discord Developer Portal](https://discord.com/developers/applications)
+2. Create application → Bot → Copy Token
+3. Enable **Privileged Gateway Intents**: `Server Members Intent`, `Message Content Intent`
 
-### Приглашение бота
+### Inviting the Bot
 
-1. В Developer Portal: **OAuth2 → URL Generator**
+1. In Developer Portal: **OAuth2 → URL Generator**
 2. Scopes: `bot` `applications.commands`
 3. Permissions: `Manage Server` `Manage Roles` `Manage Channels` `View Channels` `Send Messages` `Read Message History`
-4. Открой ссылку → выбери сервер
+4. Open the URL → select your server
 
 ---
 
-## Структура проекта
+## Project Structure
 
 ```
 DS Motier/
-├── main.py              # Точка входа, слеш-команды, ивенты
-├── parser.py            # Парсер DSL-шаблонов (токенизатор + парсер)
-├── builder.py           # Строитель сервера — создаёт/обновляет роли, каналы и т.д.
-├── exporter.py          # Экспорт сервера в DSL-формат
-├── models.py            # Data-классы для всех DS L-блоков
-├── config.py            # Токен бота (НЕ КОММИТИТЬ)
-├── config.example.py    # Пример конфига (для GitHub)
-├── welcome.py           # Приветственные сообщения + авто-роль
-├── tickets.py           # Тикет-система (кнопки)
-├── temp_voice.py        # Временные голосовые комнаты
-├── reactions.py         # Роли по реакциям и кнопкам
-├── requirements.txt     # Зависимости
-├── DOCS.md              # Полная документация DSL
-├── Документация DSL.txt # Документация в TXT (кодировка UTF-8)
-├── LICENSE              # MIT лицензия
+├── main.py              # Entry point, slash commands, events
+├── parser.py            # DSL parser (tokenizer + parser)
+├── builder.py           # Server builder — creates/updates roles, channels, etc.
+├── exporter.py          # Server export to DSL format
+├── models.py            # Data classes for all DSL blocks
+├── config.py            # Bot token (DO NOT COMMIT)
+├── config.example.py    # Example config (for GitHub)
+├── welcome.py           # Welcome messages + auto-role
+├── tickets.py           # Ticket system (buttons)
+├── temp_voice.py        # Temp voice channels
+├── reactions.py         # Reaction and button roles
+├── requirements.txt     # Dependencies
+├── DOCS.md              # Full DSL documentation
+├── LICENSE              # MIT license
 ├── .gitignore
-├── example.txt          # Базовый пример шаблона
-├── example_advanced.txt # Продвинутый пример (INCLUDE, VAR)
-├── example_roles.txt    # Пример для INCLUDE
-├── example_channels.txt # Пример для INCLUDE
-└── programmer_server.txt # Пример: сервер разработчиков
+├── example.txt          # Basic template example
+├── example_advanced.txt # Advanced example (INCLUDE, VAR)
+├── example_roles.txt    # Example for INCLUDE
+├── example_channels.txt # Example for INCLUDE
+└── programmer_server.txt # Developer server example
 ```
 
 ---
 
-## Пример шаблона
-
-```dsl
-SERVER {
-    name = "My Server"
-}
-
-ROLE {
-    name = "Admin"
-    color = "#ff0000"
-    permissions = administrator
-    hoist = true
-}
-
-CATEGORY {
-    name = "General"
-
-    TEXT {
-        name = "chat"
-        topic = "Общий чат"
-    }
-
-    VOICE {
-        name = "Voice"
-        limit = 10
-    }
-}
-```
+## Links
+- Website: https://ewee-eco.github.io/DS-Motier/
+- Discord: https://discord.gg/34YmpcVjrR
+- Docs: https://github.com/EwEE-ECO/DS-Motier/blob/main/DOCS.md
 
 ---
 
-## Команды бота
+## Support
 
-| Команда | Описание |
-|---------|----------|
-| `/build` | Загрузить `.txt` шаблон и построить сервер |
-| `/export` | Экспортировать сервер в DSL-формат |
-| `/sync` | Синхронизировать слеш-команды (только владелец сервера) |
+If you find this project useful, consider supporting the author:
+
+[![YooMoney](https://img.shields.io/badge/YooMoney-Donate-8B5CF6?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMjEuNzVDNi4yIDIxLjc1IDEuNSAxNy4wNSAxLjUgMTEuMjVDMS41IDUuNDUgNi4yIDAuNzUgMTIgMC43NUMxNy44IDAuNzUgMjIuNSA1LjQ1IDIyLjUgMTEuMjVDMjIuNSAxNy4wNSAxNy44IDIxLjc1IDEyIDIxLjc1Wk0xMiAzLjc1QzcuNzIgMy43NSA0LjI1IDcuMjIgNC4yNSAxMS41QzQuMjUgMTUuNzggNy43MiAxOS4yNSAxMiAxOS4yNUMxNi4yOCAxOS4yNSAxOS43NSAxNS43OCAxOS43NSAxMS41QzE5Ljc1IDcuMjIgMTYuMjggMy43NSAxMiAzLjc1WiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=)](https://yoomoney.ru/to/4100119169295985)
 
 ---
 
-## English
-
-**DS Motier** is a Discord bot that builds servers from a text template (DSL v3.0).  
-Create roles, channels, categories, forums, tickets, and more with a single command.
-
-### Commands
-
-| Command | Description |
-|---------|-------------|
-| `/build` | Upload a `.txt` template and build the server |
-| `/export` | Export the server to DSL format |
-| `/sync` | Sync slash commands (server owner only) |
-
-### Quick Start
-
-```bash
-pip install -r requirements.txt
-# Copy config.example.py to config.py, add your bot token
-python main.py
-```
-
----
-
-## Поддержать
-
-Если проект оказался полезным, можно поддержать автора:
-
-[![YooMoney](https://img.shields.io/badge/ЮMoney-Поддержать-8B5CF6?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMjEuNzVDNi4yIDIxLjc1IDEuNSAxNy4wNSAxLjUgMTEuMjVDMS41IDUuNDUgNi4yIDAuNzUgMTIgMC43NUMxNy44IDAuNzUgMjIuNSA1LjQ1IDIyLjUgMTEuMjVDMjIuNSAxNy4wNSAxNy44IDIxLjc1IDEyIDIxLjc1Wk0xMiAzLjc1QzcuNzIgMy43NSA0LjI1IDcuMjIgNC4yNSAxMS41QzQuMjUgMTUuNzggNy43MiAxOS4yNSAxMiAxOS4yNUMxNi4yOCAxOS4yNSAxOS43NSAxNS43OCAxOS43NSAxMS41QzE5Ljc1IDcuMjIgMTYuMjggMy43NSAxMiAzLjc1WiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=)](https://yoomoney.ru/to/4100119169295985)
-
----
-
-## Лицензия
+## License
 
 MIT License

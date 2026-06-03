@@ -1,91 +1,91 @@
-# Discord Server DSL v3.0 — Документация
+# Discord Server DSL v3.0 — Documentation
 
-DSL (Domain-Specific Language) — текстовый формат для полного описания Discord-сервера.
+DSL (Domain-Specific Language) — a text format for fully describing a Discord server.
 
 ---
 
-## Синтаксис
+## Syntax
 
-### Базовые типы значений
-
-```dsl
-name = "General"        # Строка (в кавычках)
-limit = 10              # Число
-nsfw = true             # Логическое (true / false)
-color = #ff0000         # Цвет (hex без кавычек)
-color = "blue"          # Цвет (именованный, в кавычках или без)
-```
-
-### Комментарии
+### Basic value types
 
 ```dsl
-// Это комментарий
-// Всё от // до конца строки игнорируется
+name = "General"        # String (in quotes)
+limit = 10              # Number
+nsfw = true             # Boolean (true / false)
+color = #ff0000         # Color (hex without quotes)
+color = "blue"          # Color (named, with or without quotes)
 ```
 
-### Переменные (VAR)
+### Comments
+
+```dsl
+// This is a comment
+// Everything from // to end of line is ignored
+```
+
+### Variables (VAR)
 
 ```dsl
 VAR SERVER_NAME = "My Server"
-VAR WELCOME_MSG = "Добро пожаловать!"
+VAR WELCOME_MSG = "Welcome!"
 
 SERVER {
     name = SERVER_NAME
 }
 ```
 
-### Подключение файлов (INCLUDE)
+### Including files (INCLUDE)
 
 ```dsl
 INCLUDE "roles.txt"
 INCLUDE "channels.txt"
 ```
 
-Путь указывается относительно папки, из которой запущен бот.
+Path is relative to the folder from which the bot is running.
 
 ---
 
-## Блоки
+## Blocks
 
-### SERVER — настройки сервера
+### SERVER — server settings
 
 ```dsl
 SERVER {
     name = "My Server"
-    description = "Описание сервера"
+    description = "Server description"
     verification_level = none     // none | low | medium | high | highest
     default_notifications = all   // all | mentions
 }
 ```
 
-Обязателен только `name`.
+Only `name` is required.
 
 ---
 
-### ROLE — роль
+### ROLE — role
 
 ```dsl
 ROLE {
     name = "Admin"
-    color = "#ff0000"         // hex или именованный
+    color = "#ff0000"         // hex or named
     permissions = administrator
     permissions = manage_channels,manage_roles,kick_members
-    hoist = true              // отображать отдельно
-    mentionable = false       // разрешить упоминание
+    hoist = true              // display separately
+    mentionable = false       // allow mentioning
 }
 ```
 
-**Поддерживаемые разрешения:** `administrator`, `manage_channels`, `manage_roles`, `manage_messages`, `manage_threads`, `manage_events`, `kick_members`, `ban_members`, `moderate_members`, `mention_everyone`, `view_audit_log`, `manage_webhooks`, `manage_nicknames`, `create_instant_invite`, `send_messages`, `embed_links`, `attach_files`, `read_message_history`, `use_external_emojis`, `use_external_stickers`, `add_reactions`, `connect`, `speak`, `move_members`, `stream`, `priority_speaker`, `request_to_speak`, и другие.
+**Supported permissions:** `administrator`, `manage_channels`, `manage_roles`, `manage_messages`, `manage_threads`, `manage_events`, `kick_members`, `ban_members`, `moderate_members`, `mention_everyone`, `view_audit_log`, `manage_webhooks`, `manage_nicknames`, `create_instant_invite`, `send_messages`, `embed_links`, `attach_files`, `read_message_history`, `use_external_emojis`, `use_external_stickers`, `add_reactions`, `connect`, `speak`, `move_members`, `stream`, `priority_speaker`, `request_to_speak`, and others.
 
 ---
 
-### CATEGORY — категория
+### CATEGORY — category
 
 ```dsl
 CATEGORY {
     name = "Administration"
 
-    // Права для всей категории (наследуются каналами)
+    // Permissions for the whole category (inherited by channels)
     allow = "Admin","Moderator"
     deny = "Member"
 
@@ -96,40 +96,40 @@ CATEGORY {
 }
 ```
 
-Каналы внутри категории наследуют `allow`/`deny` родителя.  
-Если у канала свои `allow`/`deny` — они применяются вдобавок к родительским.
+Channels inside a category inherit the parent's `allow`/`deny`.  
+If a channel has its own `allow`/`deny`, they are applied in addition to the parent's.
 
 ---
 
-### TEXT — текстовый канал
+### TEXT — text channel
 
 ```dsl
 TEXT {
     name = "general"
-    topic = "Основной чат"
-    slowmode = 5             // задержка в секундах
+    topic = "Main chat"
+    slowmode = 5             // delay in seconds
     nsfw = false
-    readonly = true          // только чтение (запрет отправки)
+    readonly = true          // read-only (prevents sending)
     send_messages = true
     create_threads = true
 
-    // Права доступа (переопределяют родительские)
+    // Access permissions (override parent)
     allow = "Role1","Role2"
     deny = "Role3"
 }
 ```
 
-`readonly = true` запрещает `send_messages`, `add_reactions`, `create_public_threads`, `create_private_threads`, `send_messages_in_threads` для `@everyone`.
+`readonly = true` disables `send_messages`, `add_reactions`, `create_public_threads`, `create_private_threads`, `send_messages_in_threads` for `@everyone`.
 
 ---
 
-### VOICE — голосовой канал
+### VOICE — voice channel
 
 ```dsl
 VOICE {
     name = "General Voice"
-    limit = 10               // 0 = безлимит
-    bitrate = 64000          // от 8000 до 384000 (96000 для boosts)
+    limit = 10               // 0 = unlimited
+    bitrate = 64000          // from 8000 to 384000 (96000 for boosts)
     video_quality = auto     // auto | 720p | 1080p
     allow = "Role1"
     deny = "Role2"
@@ -138,7 +138,7 @@ VOICE {
 
 ---
 
-### STAGE — Stage канал
+### STAGE — Stage channel
 
 ```dsl
 STAGE {
@@ -148,16 +148,16 @@ STAGE {
 }
 ```
 
-Требует включённого Community-режима на сервере.
+Requires Community mode enabled on the server.
 
 ---
 
-### FORUM — форум
+### FORUM — forum
 
 ```dsl
 FORUM {
     name = "help-forum"
-    topic = "Форум помощи"
+    topic = "Help forum"
     slowmode = 5
     nsfw = false
     default_reaction = "👍"
@@ -167,11 +167,11 @@ FORUM {
 }
 ```
 
-Требует включённого Community-режима на сервере.
+Requires Community mode enabled on the server.
 
 ---
 
-### RULES_CHANNEL — канал правил
+### RULES_CHANNEL — rules channel
 
 ```dsl
 RULES_CHANNEL {
@@ -179,11 +179,11 @@ RULES_CHANNEL {
 }
 ```
 
-Discord автоматически назначит его как канал правил.
+Discord will automatically set it as the rules channel.
 
 ---
 
-### COMMUNITY — настройки сообщества
+### COMMUNITY — community settings
 
 ```dsl
 COMMUNITY {
@@ -195,27 +195,27 @@ COMMUNITY {
 
 ---
 
-### WELCOME — приветственное сообщение
+### WELCOME — welcome message
 
 ```dsl
 WELCOME {
     channel = "welcome"
-    message = "Добро пожаловать на сервер, {user}!"
+    message = "Welcome to the server, {user}!"
 }
 ```
 
-**Переменные для message:**
+**Variables for message:**
 
-| Переменная | Описание |
+| Variable | Description |
 |------------|----------|
-| `{user}` | Упоминание пользователя (@user) |
-| `{username}` | Имя пользователя |
-| `{member_count}` | Количество участников |
-| `{server_name}` | Название сервера |
+| `{user}` | User mention (@user) |
+| `{username}` | Username |
+| `{member_count}` | Member count |
+| `{server_name}` | Server name |
 
 ---
 
-### AUTO_ROLE — автоматическая выдача роли
+### AUTO_ROLE — automatic role assignment
 
 ```dsl
 AUTO_ROLE {
@@ -223,26 +223,26 @@ AUTO_ROLE {
 }
 ```
 
-Выдаётся новому участнику сразу после входа.
+Assigned to new members immediately upon joining.
 
 ---
 
-### REACTION_ROLE — роль по реакции
+### REACTION_ROLE — role via reaction
 
 ```dsl
 REACTION_ROLE {
     channel = "roles"
-    message = "Выберите язык программирования"
+    message = "Choose a programming language"
     emoji = "🐍"
     role = "Python"
 }
 ```
 
-При добавлении реакции — роль выдаётся. При снятии — забирается.
+On reaction add — role assigned. On reaction remove — removed.
 
 ---
 
-### BUTTON_ROLE — роль по кнопке
+### BUTTON_ROLE — role via button
 
 ```dsl
 BUTTON_ROLE {
@@ -253,11 +253,11 @@ BUTTON_ROLE {
 }
 ```
 
-Нажатие на кнопку — роль добавляется/убирается (toggle).
+Button press — role toggles on/off.
 
 ---
 
-### TICKETS — тикет-система
+### TICKETS — ticket system
 
 ```dsl
 TICKETS {
@@ -269,13 +269,13 @@ TICKETS {
 }
 ```
 
-- В канале `create_channel_name` появляется кнопка "Create Ticket"
-- Тикет-канал виден только создателю и staff-ролям
-- Кнопка "Close" удаляет канал через 5 секунд
+- A "Create Ticket" button appears in the `create_channel_name` channel
+- Ticket channel is visible only to the creator and staff roles
+- The "Close" button deletes the channel after 5 seconds
 
 ---
 
-### TEMP_VOICE — временные голосовые комнаты
+### TEMP_VOICE — temporary voice channels
 
 ```dsl
 TEMP_VOICE {
@@ -285,12 +285,12 @@ TEMP_VOICE {
 }
 ```
 
-Когда пользователь заходит в канал с именем `name`, создаётся его личная комната.  
-При выходе всех участников — комната автоматически удаляется.
+When a user joins the channel named `name`, their personal room is created.  
+When all participants leave, the room is automatically deleted.
 
 ---
 
-### LOGS — логирование
+### LOGS — logging
 
 ```dsl
 LOGS {
@@ -303,11 +303,11 @@ LOGS {
 }
 ```
 
-> **Примечание:** система логов находится в разработке.
+> **Note:** logging system is under development.
 
 ---
 
-### COUNTER — счётчик
+### COUNTER — counter
 
 ```dsl
 COUNTER {
@@ -316,25 +316,25 @@ COUNTER {
 }
 ```
 
-Создаёт голосовой канал, в котором `{count}` заменяется на текущее значение.
+Creates a voice channel where `{count}` is replaced with the current value.
 
 ---
 
-### AUTO_MESSAGE — автоматическое сообщение
+### AUTO_MESSAGE — automatic message
 
 ```dsl
 AUTO_MESSAGE {
     channel = "general"
     interval_hours = 24
-    message = "Не забудьте показать свой проект!"
+    message = "Don't forget to show your project!"
 }
 ```
 
-Отправляет сообщение в канал каждые `interval_hours` часов.
+Sends a message to the channel every `interval_hours` hours.
 
 ---
 
-### EMOJI — пользовательский эмодзи
+### EMOJI — custom emoji
 
 ```dsl
 EMOJI {
@@ -345,7 +345,7 @@ EMOJI {
 
 ---
 
-### STICKER — стикер
+### STICKER — sticker
 
 ```dsl
 STICKER {
@@ -356,7 +356,7 @@ STICKER {
 
 ---
 
-### WEBHOOK — вебхук
+### WEBHOOK — webhook
 
 ```dsl
 WEBHOOK {
@@ -367,19 +367,19 @@ WEBHOOK {
 
 ---
 
-### SCHEDULED_EVENT — запланированное событие
+### SCHEDULED_EVENT — scheduled event
 
 ```dsl
 SCHEDULED_EVENT {
     name = "Code Review"
-    description = "Разбор проектов сообщества"
+    description = "Community project reviews"
     date = "2026-07-01"
 }
 ```
 
 ---
 
-### TEXT_TEMPLATE — каналы по шаблону
+### TEXT_TEMPLATE — template channels
 
 ```dsl
 TEXT_TEMPLATE {
@@ -388,11 +388,11 @@ TEXT_TEMPLATE {
 }
 ```
 
-Создаст каналы `project-1`, `project-2`, `project-3`, `project-4`, `project-5`.
+Creates channels `project-1`, `project-2`, `project-3`, `project-4`, `project-5`.
 
 ---
 
-### PERMISSION_GROUP — группа ролей
+### PERMISSION_GROUP — role group
 
 ```dsl
 PERMISSION_GROUP {
@@ -401,7 +401,7 @@ PERMISSION_GROUP {
 }
 ```
 
-Используется в `allow`/`deny` по `id`:
+Used in `allow`/`deny` by `id`:
 
 ```dsl
 CATEGORY {
@@ -412,18 +412,18 @@ CATEGORY {
 
 ---
 
-### BOT — настройки бота
+### BOT — bot settings
 
 ```dsl
 BOT {
     prefix = "!"
-    language = "ru"
+    language = "en"
 }
 ```
 
 ---
 
-## Полный пример
+## Full example
 
 ```dsl
 SERVER {
@@ -438,14 +438,14 @@ AUTO_ROLE { role = "Member" }
 CATEGORY {
     name = "General"
 
-    TEXT { name = "welcome" topic = "Добро пожаловать!" readonly = true }
-    TEXT { name = "chat" topic = "Общий чат" }
+    TEXT { name = "welcome" topic = "Welcome!" readonly = true }
+    TEXT { name = "chat" topic = "General chat" }
     VOICE { name = "Voice" limit = 10 }
 }
 
 WELCOME {
     channel = "welcome"
-    message = "Добро пожаловать, {user}!"
+    message = "Welcome, {user}!"
 }
 
 TICKETS {
@@ -460,7 +460,7 @@ TEMP_VOICE {
 
 ---
 
-## Экспорт
+## Export
 
-Команда `/export` выгружает текущий сервер в DSL-формат.  
-Скачанный файл можно отредактировать и загрузить через `/build`.
+The `/export` command exports the current server to DSL format.  
+The downloaded file can be edited and uploaded via `/build`.
