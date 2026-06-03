@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="ru"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="dark"><meta name="keywords" content="discord бот, сборка discord сервера, dsl v3.0, discord server builder, discord шаблон, discord автоматизация"><title>Документация DSL v3.0 — DS Motier — сборка Discord серверов</title><meta name="description" content="Полная документация DSL v3.0: блоки, директивы, переменные, селекторы."><meta property="og:title" content="Документация DSL v3.0 — DS Motier — сборка Discord серверов"><meta property="og:description" content="Полная документация DSL v3.0: блоки, директивы, переменные, селекторы."><meta property="og:type" content="website"><meta property="og:url" content="https://ewee-eco.github.io/DS-Motier/"><meta property="og:image" content="https://ewee-eco.github.io/DS-Motier/og-image.png"><link rel="canonical" href="https://ewee-eco.github.io/DS-Motier/"><link rel="icon" type="image/svg+xml" href="/DS-Motier/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DS Motier","operatingSystem":"Windows, macOS, Linux","applicationCategory":"Utilities","description":"Полная документация DSL v3.0: блоки, директивы, переменные, селекторы.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"EwEE-ECO"}}</script><link rel="stylesheet" href="/DS-Motier/styles/global.css"></head> <body>  <header class="header" id="header"> <div class="header-inner"> <a href="#" class="logo"> <svg width="22" height="22" viewBox="0 0 127.14 96.36" fill="currentColor"> <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"></path> </svg> <span>DS Motier</span> </a> <nav class="header-nav"> <a href="#features">Возможности</a> <a href="#showcase">DSL</a> <a href="#how-it-works">Установка</a> <a href="#bot-setup">Бот</a> <a href="#commands">Команды</a> <a href="#faq">FAQ</a> <a href="https://github.com/EwEE-ECO/DS-Motier" target="_blank" rel="noopener noreferrer" class="header-gh-link"> <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"> <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path> </svg> <span>GitHub</span> </a> </nav> </div> </header> <script type="module">const d=document.getElementById("header");let s=0;window.addEventListener("scroll",()=>{const e=window.scrollY;e>120&&e>s?d.classList.add("header-hidden"):d.classList.remove("header-hidden"),s=e},{passive:!0});</script> <main class="page-section"> <div class="page-section-inner docs-layout"> <aside class="docs-sidebar"> <div class="docs-sidebar-title">Содержание</div> <ul class="docs-toc"> <li><a href="#overview">Обзор</a></li> <li><a href="#blocks">Блоки</a> <ul class="docs-toc-sublist"> <li><a href="#block-category">CATEGORY</a></li> <li><a href="#block-channel">CHANNEL</a></li> <li><a href="#block-forum">FORUM</a></li> <li><a href="#block-thread">THREAD</a></li> <li><a href="#block-stage">STAGE</a></li> <li><a href="#block-counter">COUNTER</a></li> <li><a href="#block-role">ROLE</a></li> <li><a href="#block-ticket">TICKET</a></li> <li><a href="#block-voice">TEMP_VOICE</a></li> <li><a href="#block-embed">EMBED</a></li> <li><a href="#block-buttonrole">BUTTON_ROLE</a></li> <li><a href="#block-reactionrole">REACTION_ROLE</a></li> <li><a href="#block-automessage">AUTO_MESSAGE</a></li> <li><a href="#block-welcome">WELCOME</a></li> <li><a href="#block-include">INCLUDE</a></li> </ul> </li> <li><a href="#variables">Переменные</a></li> <li><a href="#selectors">Селекторы</a></li> <li><a href="#examples">Примеры</a></li> </ul> </aside> <div class="docs-content"> <a href="/DS-Motier/" class="back-link">← На главную</a> <h1 id="overview">Документация DSL v3.0</h1> <p>DSL (Domain-Specific Language) v3.0 — текстовый формат описания структуры Discord-сервера. Бот <a href="/DS-Motier/">DS Motier</a> читает <code>.txt</code> шаблон и строит сервер автоматически: категории, каналы, роли, форумы, тикеты, временные голосовые.</p> <div class="doc-card"> <h3>Основные возможности</h3> <ul> <li>Категории, текстовые каналы, форумы, стейджи, счётчики</li> <li>Роли с правами, цветом, отображением</li> <li>Тикет-система и временные голосовые комнаты</li> <li>Выдача ролей по кнопкам и реакциям</li> <li>Приветствия, автосообщения, embed</li> <li>Переменные <code class="inline-code">$имя</code></li> <li>Подключение файлов через <code class="inline-code">!INCLUDE</code></li> <li>Селекторы доступа <code class="inline-code">@allow</code> / <code class="inline-code">@deny</code></li> </ul> </div> <section id="blocks"> <h2>Блоки</h2> <div class="doc-card" id="block-category"> <div class="doc-card-header"> <span class="doc-card-tag">CATEGORY</span> <h3>Категория</h3> </div> <p>Группирует каналы. Внутри можно вкладывать <code class="inline-code">CHANNEL</code>, <code class="inline-code">FORUM</code>, <code class="inline-code">VOICE</code>, <code class="inline-code">STAGE</code>, <code class="inline-code">COUNTER</code>, <code class="inline-code">TEMP_VOICE</code>.</p> <pre><code>CATEGORY &quot;Информация&quot; {
+  CHANNEL #правила
+  CHANNEL #новости
+}
+
+CATEGORY &quot;Админ&quot; @admin {
+  CHANNEL #админ-чат
+}</code></pre> <p>Селектор <code class="inline-code">@admin</code> после имени ограничивает видимость категории для роли.</p> </div> <div class="doc-card" id="block-channel"> <div class="doc-card-header"> <span class="doc-card-tag">CHANNEL</span> <h3>Текстовый канал</h3> </div> <pre><code>CHANNEL #общий
+CHANNEL #правила { @slowmode 5 }
+CHANNEL #админ { @deny @everyone @allow admin }</code></pre> <p>Атрибуты: <code class="inline-code">@slowmode</code> (секунды), селекторы <code class="inline-code">@allow</code>/<code class="inline-code">@deny</code>.</p> </div> <div class="doc-card" id="block-forum"> <div class="doc-card-header"> <span class="doc-card-tag">FORUM</span> <h3>Форум</h3> </div> <p>Канал-форум со встроенными темами. Внутри обязателен хотя бы один <code class="inline-code">THREAD</code>.</p> <pre><code>FORUM &quot;Поддержка&quot; {
+  THREAD баг-репорт
+  THREAD вопрос
+  @slowmode 30
+}</code></pre> </div> <div class="doc-card" id="block-thread"> <div class="doc-card-header"> <span class="doc-card-tag">THREAD</span> <h3>Ветка форума</h3> </div> <pre><code>THREAD баг-репорт
+THREAD &quot;тема с пробелами&quot;</code></pre> <p>Одно слово — без кавычек, несколько слов — в двойных кавычках.</p> </div> <div class="doc-card" id="block-stage"> <div class="doc-card-header"> <span class="doc-card-tag">STAGE</span> <h3>Стейдж (эфир)</h3> </div> <p>Голосовой канал для мероприятий.</p> <pre><code>STAGE &quot;Текущий эфир&quot;
+STAGE &quot;LIVE&quot; { @topic &quot;Обсуждаем обновление&quot; }</code></pre> </div> <div class="doc-card" id="block-counter"> <div class="doc-card-header"> <span class="doc-card-tag">COUNTER</span> <h3>Счётчик участников</h3> </div> <p>Голосовой канал, в названии которого отображается число участников сервера.</p> <pre><code>COUNTER &quot;👥 Участники: {count}&quot;
+COUNTER &quot;🎧 В голосе: {count}&quot;</code></pre> <p><code class="inline-code">{count}</code> заменяется на текущее количество участников.</p> </div> <div class="doc-card" id="block-role"> <div class="doc-card-header"> <span class="doc-card-tag">ROLE</span> <h3>Роль</h3> </div> <pre><code>ROLE &quot;Модератор&quot; {
+  @color #5865F2
+  @permissions kick_members, ban_members
+  @display separate
+  @mentionable true
+}
+
+ROLE &quot;Новичок&quot; { @color #808080 }</code></pre> <p>Атрибуты:</p> <ul> <li><code class="inline-code">@color</code> — HEX-цвет</li> <li><code class="inline-code">@permissions</code> — список прав через запятую</li> <li><code class="inline-code">@display</code> — <code class="inline-code">separate</code> / <code class="inline-code">none</code></li> <li><code class="inline-code">@mentionable</code> — <code class="inline-code">true</code> / <code class="inline-code">false</code></li> </ul> </div> <div class="doc-card" id="block-ticket"> <div class="doc-card-header"> <span class="doc-card-tag">TICKET</span> <h3>Тикет-система</h3> </div> <p>Создаёт канал с кнопкой открытия тикета. При нажатии создаётся приватный канал для пользователя.</p> <pre><code>TICKET &quot;Связаться с нами&quot; {
+  @category &quot;Поддержка&quot;
+  @button 📩 Создать тикет
+  @description &quot;Мы ответим в ближайшее время&quot;
+}</code></pre> </div> <div class="doc-card" id="block-voice"> <div class="doc-card-header"> <span class="doc-card-tag">TEMP_VOICE</span> <h3>Временные голосовые</h3> </div> <p>Пользователь нажимает кнопку — создаётся временный голосовой канал. Удаляется, когда все выходят.</p> <pre><code>TEMP_VOICE &quot;Создать комнату&quot; {
+  @category &quot;Голосовые&quot;
+  @button 🔈 Создать
+  @channel_prefix &quot;Комната&quot;
+  @user_limit 10
+}</code></pre> </div> <div class="doc-card" id="block-embed"> <div class="doc-card-header"> <span class="doc-card-tag">EMBED</span> <h3>Embed-сообщение</h3> </div> <p>Отправляет красивое embed-сообщение в указанный канал при сборке.</p> <pre><code>EMBED #правила {
+  @title &quot;Правила сервера&quot;
+  @description &quot;1. Уважайте друг друга\n2. Не флудите&quot;
+  @color #5865F2
+  @footer &quot;DS Motier&quot;
+}</code></pre> </div> <div class="doc-card" id="block-buttonrole"> <div class="doc-card-header"> <span class="doc-card-tag">BUTTON_ROLE</span> <h3>Роли по кнопкам</h3> </div> <p>Выдача ролей по нажатию кнопки.</p> <pre><code>BUTTON_ROLE &quot;Роли&quot; {
+  @channel #роли
+  @description &quot;Выберите игры&quot;
+  ROLE &quot;CS:GO&quot; 🎮
+  ROLE &quot;Valorant&quot; 🔫
+}</code></pre> </div> <div class="doc-card" id="block-reactionrole"> <div class="doc-card-header"> <span class="doc-card-tag">REACTION_ROLE</span> <h3>Роли по реакциям</h3> </div> <p>Выдача ролей по реакции на сообщение.</p> <pre><code>REACTION_ROLE &quot;Уведомления&quot; {
+  @channel #реакции
+  @description &quot;Нажми на реакцию&quot;
+  REACTION &quot;📢&quot; анонсы
+  REACTION &quot;🎮&quot; ивенты
+}</code></pre> </div> <div class="doc-card" id="block-automessage"> <div class="doc-card-header"> <span class="doc-card-tag">AUTO_MESSAGE</span> <h3>Автосообщение</h3> </div> <p>Автоматическая отправка сообщения в канал при сборке.</p> <pre><code>AUTO_MESSAGE #общий {
+  @content &quot;Добро пожаловать!&quot;
+}
+
+AUTO_MESSAGE #правила {
+  @embed &quot;Правила&quot;
+  @content &quot;Ознакомьтесь выше&quot;
+}</code></pre> </div> <div class="doc-card" id="block-welcome"> <div class="doc-card-header"> <span class="doc-card-tag">WELCOME</span> <h3>Приветствие</h3> </div> <p>Приветствие новых участников в указанном канале.</p> <pre><code>WELCOME {
+  @channel #общий
+  @message &quot;Добро пожаловать, {user}!&quot;
+}</code></pre> <p><code class="inline-code">{user}</code> заменяется на упоминание нового участника.</p> </div> <div class="doc-card" id="block-include"> <div class="doc-card-header"> <span class="doc-card-tag">!INCLUDE</span> <h3>Подключение файлов</h3> </div> <p>Позволяет разбивать шаблон на несколько файлов.</p> <pre><code>!INCLUDE "base.txt"
+!INCLUDE "roles/moderators.txt"</code></pre> </div> </section> <div class="doc-section-divider"></div> <section id="variables"> <h2>Переменные</h2> <p>Переменные позволяют переиспользовать значения в шаблоне. Объявляются через <code class="inline-code">$имя = значение</code>.</p> <pre><code>$color_primary = #5865F2
+$color_danger  = #ED4245
+$prefix        = "!"
+$admin_role    = "Администратор"
+
+CATEGORY &quot;Основное&quot; {
+  CHANNEL #общий { @allow $admin_role }
+}
+
+ROLE $admin_role { @color $color_primary }</code></pre> <p>Используются в любом месте шаблона кроме строковых литералов.</p> </section> <div class="doc-section-divider"></div> <section id="selectors"> <h2>Селекторы доступа</h2> <p>Управление видимостью каналов и категорий.</p> <pre><code>CHANNEL #админ-чат {
+  @allow admin
+  @deny @everyone
+}
+
+CATEGORY &quot;VIP&quot; @vip {
+  CHANNEL #vip-чат
+}</code></pre> <ul> <li><code class="inline-code">@allow роль</code> — разрешить доступ</li> <li><code class="inline-code">@deny роль</code> — запретить доступ</li> <li><code class="inline-code">@everyone</code> — ссылка на роль @everyone</li> <li>Селектор после CATEGORY применяется ко всем вложенным каналам</li> </ul> </section> <div class="doc-section-divider"></div> <section id="examples"> <h2>Примеры</h2> <div class="doc-card"> <h3>Минимальный шаблон</h3> <pre><code>CATEGORY &quot;Основное&quot; {
+  CHANNEL #общий
+  CHANNEL #оффтоп
+}
+
+ROLE &quot;Модератор&quot; { @color #5865F2 }</code></pre> </div> <div class="doc-card"> <h3>Полный шаблон</h3> <pre><code>@name "Мой сервер"
+
+$color_main = #5865F2
+$color_success = #57F287
+
+!INCLUDE "base.txt"
+
+CATEGORY &quot;Информация&quot; {
+  CHANNEL #правила { @slowmode 5 }
+  CHANNEL #новости
+  CHANNEL #объявления { @allow admin }
+}
+
+CATEGORY &quot;Общение&quot; {
+  CHANNEL #общий
+  CHANNEL #оффтоп
+  FORUM &quot;Поддержка&quot; {
+    THREAD баг-репорт
+    THREAD вопрос
+    THREAD предложение
+  }
+}
+
+ROLE &quot;Модератор&quot; color=$color_main {
+  @permissions kick_members, ban_members
+  @display separate
+}
+
+TICKET &quot;Связаться с нами&quot; {
+  @category &quot;Поддержка&quot;
+  @button 📩 Создать тикет
+}
+
+TEMP_VOICE &quot;Создать комнату&quot; {
+  @category &quot;Голосовые&quot;
+  @button 🔈 Создать
+}
+
+WELCOME {
+  @channel #общий
+  @message &quot;Добро пожаловать, {user}!&quot;
+}</code></pre> </div> </section> <a href="/DS-Motier/" class="back-link">← На главную</a> </div> </div> </main> <footer class="footer"> <div class="footer-inner"> <div class="footer-brand"> <a href="#" class="logo"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect> <line x1="3" y1="9" x2="21" y2="9"></line> <line x1="9" y1="21" x2="9" y2="9"></line> </svg>
+DS Motier
+</a> <p class="footer-desc">
+Discord Server Builder Bot — сборка целых серверов из одного текстового шаблона.
+</p> </div> <div class="footer-links"> <div class="footer-col"> <h4>Ссылки</h4> <a href="https://github.com/EwEE-ECO/DS-Motier" target="_blank" rel="noopener noreferrer">GitHub</a> <a href="https://github.com/EwEE-ECO/DS-Motier/releases" target="_blank" rel="noopener noreferrer">Релизы</a> <a href="https://github.com/EwEE-ECO/DS-Motier/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Лицензия</a> <a href="https://yoomoney.ru/to/4100119169295985" target="_blank" rel="noopener noreferrer">Поддержать</a> </div> <div class="footer-col"> <h4>Документация</h4> <a href="https://github.com/EwEE-ECO/DS-Motier/blob/main/DOCS.md" target="_blank" rel="noopener noreferrer">DSL документация</a> <a href="https://github.com/EwEE-ECO/DS-Motier/blob/main/README.md" target="_blank" rel="noopener noreferrer">README</a> </div> </div> </div> <div class="footer-bottom"> <span>&copy; 2026 DS Motier. MIT License.</span> <span>Сделано на Python &amp; discord.py</span> </div> </footer> <button id="back-to-top" class="back-to-top" aria-label="Наверх"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"> <polyline points="18 15 12 9 6 15"></polyline> </svg> </button> <script type="module">const o=document.getElementById("back-to-top");window.addEventListener("scroll",()=>{window.scrollY>600?o.classList.add("back-to-top-visible"):o.classList.remove("back-to-top-visible")},{passive:!0});o.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});</script>  <script src="/DS-Motier/scripts/site.js"></script> </body> </html>

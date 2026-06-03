@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ewee-eco.github.io/DS-Motier/sitemap.xml
